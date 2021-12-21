@@ -1,0 +1,21 @@
+srslte_fec_srcs = files([
+  'cbsegm.c',
+  'convcoder.c',
+  'crc.c',
+  'parity.c',
+  'rm_conv.c',
+  'rm_turbo.c',
+  'softbuffer.c',
+  'tc_interl_lte.c',
+  'tc_interl_umts.c',
+  'turbocoder.c',
+  'turbodecoder.c',
+  'turbodecoder_gen.c',
+  'turbodecoder_sse.c',
+  'viterbi.c',
+  'viterbi37_avx2.c',
+  'viterbi37_avx2_16bit.c',
+  'viterbi37_neon.c',
+  'viterbi37_port.c',
+  'viterbi37_sse.c'
+])

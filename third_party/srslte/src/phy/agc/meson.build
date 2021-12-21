@@ -1,0 +1,1 @@
+srslte_agc_srcs = files(['agc.c'])

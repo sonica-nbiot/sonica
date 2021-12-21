@@ -1,0 +1,18 @@
+srslte_phch_srcs = files([
+  'cqi.c',
+  'dci.c',
+  'dci_nbiot.c',
+  'npbch.c',
+  'npdcch.c',
+  'npdsch.c',
+  'nprach.c',
+  'npusch.c',
+  'prb_dl.c',
+  'pucch.c',
+  'ra.c',
+  'ra_nbiot.c',
+  'regs.c',
+  'sch.c',
+  'sequences.c',
+  'uci.c',
+])

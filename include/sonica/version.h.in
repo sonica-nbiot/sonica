@@ -1,0 +1,52 @@
+/*
+ * Copyright 2021      Metro Group @ UCLA
+ *
+ * This file is part of Sonica.
+ *
+ * Sonica is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * Sonica is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * A copy of the GNU Affero General Public License can be found in
+ * the LICENSE file in the top-level directory of this distribution
+ * and at http://www.gnu.org/licenses/.
+ *
+ */
+
+#ifndef SONICA_VERSION_H_IN
+#define SONICA_VERSION_H_IN
+
+// the configured options and settings for SRSLTE
+#define SONICA_VERSION_MAJOR @SONICA_VERSION_MAJOR@
+#define SONICA_VERSION_MINOR @SONICA_VERSION_MINOR@
+#define SONICA_VERSION_PATCH @SONICA_VERSION_PATCH@
+#define SONICA_VERSION_STRING "@SONICA_VERSION_STRING@"
+
+#define SONICA_VERSION_ENCODE(major, minor, patch) ( \
+    ((major) * 10000)                                \
+  + ((minor) *   100)                                \
+  + ((patch) *     1))
+
+#define SONICA_VERSION SONICA_VERSION_ENCODE( \
+  SONICA_VERSION_MAJOR,                       \
+  SONICA_VERSION_MINOR,                       \
+  SONICA_VERSION_PATCH)
+
+#define SONICA_VERSION_CHECK(major,minor,patch)    \
+  (SONICA_VERSION >= SONICA_VERSION_ENCODE(major,minor,patch))
+
+#include "sonica/config.h"
+
+SONICA_API char* sonica_get_version();
+SONICA_API int   sonica_get_version_major();
+SONICA_API int   sonica_get_version_minor();
+SONICA_API int   sonica_get_version_patch();
+SONICA_API int   sonica_check_version(int major, int minor, int patch);
+
+#endif // SONICA_VERSION_H_IN
