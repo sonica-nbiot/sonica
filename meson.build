@@ -1,4 +1,5 @@
-project('sonica', ['c', 'cpp'])
+project('sonica', ['c', 'cpp'],
+  default_options : ['buildtype=debugoptimized'])
 add_global_arguments('-march=native', language : ['c','cpp'])
 add_global_arguments('-Wno-reorder', '-Wno-non-virtual-dtor', language : ['cpp'])
 
