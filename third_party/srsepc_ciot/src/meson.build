@@ -3,7 +3,7 @@ subdir('hss')
 subdir('spgw')
 
 srsepc = executable('srsepc_ciot', 'main.cc',
-  include_directories : [srslte_inc, srsepc_ciot_inc],
+  include_directories : [srslte_inc, srsepc_ciot_inc, sonica_inc],
   link_with : [
     srsepc_mme,
     srsepc_hss,

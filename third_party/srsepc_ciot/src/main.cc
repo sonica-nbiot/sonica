@@ -22,7 +22,7 @@
 #include "srsepc_ciot/hss/hss.h"
 #include "srsepc_ciot/mme/mme.h"
 #include "srsepc_ciot/spgw/spgw.h"
-#include "srslte/build_info.h"
+#include "sonica/build_info.h"
 #include "srslte/common/bcd_helpers.h"
 #include "srslte/common/config_file.h"
 #include "srslte/common/crash_handler.h"
@@ -354,21 +354,21 @@ srslte::LOG_LEVEL_ENUM level(std::string l)
 
 std::string get_build_mode()
 {
-  return std::string(srslte_get_build_mode());
+  return std::string(sonica_get_build_mode());
 }
 
 std::string get_build_info()
 {
-  if (std::string(srslte_get_build_info()).find("  ") != std::string::npos) {
-    return std::string(srslte_get_version());
+  if (std::string(sonica_get_build_info()).find("  ") != std::string::npos) {
+    return std::string(sonica_get_build_info());
   }
-  return std::string(srslte_get_build_info());
+  return std::string(sonica_get_build_info());
 }
 
 std::string get_build_string()
 {
   std::stringstream ss;
-  ss << "Built in " << get_build_mode() << " mode using " << get_build_info() << "." << std::endl;
+  ss << "Built in " << sonica_get_build_mode() << " mode using " << sonica_get_build_info() << "." << std::endl;
   return ss.str();
 }
 

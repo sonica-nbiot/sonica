@@ -193,9 +193,9 @@ if have_avx512
   add_global_arguments('-mavx512f', '-mavx512cd', '-mavx512bw', '-mavx512dq', '-DLV_HAVE_AVX512', language : ['c','cpp'])
 endif
 
-subdir('third_party')
-
 subdir('include')
+
+subdir('third_party')
 
 subdir('src')
 
