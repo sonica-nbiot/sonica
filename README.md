@@ -41,7 +41,7 @@ The two binary programs are located within 'builddir' directory:
 * eNodeB: `sonica_enb/sonica_enb`
 * EPC: `third_party/srsepc_ciot/src/srsepc_ciot`
 
-For more details, see our [documentation](https://sonic-nbiot.github.io/sonica).
+For more details, see our [documentation](https://dboyan.github.io/sonica-doc/).
 
 ## Join the Community
 If you have any technical issue, please go to [Issues](https://github.com/sonica-nbiot/sonica/issues).
