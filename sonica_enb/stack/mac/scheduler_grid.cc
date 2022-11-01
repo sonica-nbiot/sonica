@@ -287,7 +287,7 @@ void sf_sched::set_ul_sched_result(sched_interface::ul_sched_res_t*    ul_result
 
     /* Generate DCI FormatN0 */
     //    uint32_t pending_data_before = user->get_pending_ul_new_data(get_tti_tx_ul());
-    int tbs = user->generate_formatN0(npusch, ul_alloc.needs_npdcch(), fixed_mcs);
+    int tbs = user->generate_formatN0(npusch, ul_alloc.alloc, ul_alloc.needs_npdcch(), fixed_mcs);
 
     //    ul_harq_proc* h = user->get_ul_harq(get_tti_tx_ul(), cell_index);
 
@@ -461,7 +461,8 @@ alloc_outcome_t sf_sched::alloc_ul(sched_ue*                    user,
     // TODO: NB-IoT: Decide the MCS based on the estimated pending data now
     uint32_t pending_data = user->get_pending_ul_new_data(tti_tx_dl);
     if(pending_data >= 125){
-      mcs = 12;
+      alloc.len = 6;
+      mcs = 10;
     } else {
       mcs = 9;
     }

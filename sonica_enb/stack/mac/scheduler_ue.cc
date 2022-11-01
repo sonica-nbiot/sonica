@@ -258,10 +258,10 @@ const int tbs_table_nbiot[13][8] = {{16, 32, 56, 88, 120, 152, 208, 256},
 int sched_ue::generate_formatN0(sched_interface::ul_sched_data_t* data,
                                 //                               uint32_t                          tti,
                                 //                               uint32_t                          cc_idx,
-                                //                               ul_harq_proc::ul_alloc_t          alloc,
-                                bool needs_npdcch,
+                                ul_harq_proc::ul_alloc_t          alloc,
+                                bool                              needs_pdcch,
                                 //                               srslte_dci_location_t             dci_pos,
-                                int explicit_mcs)
+                                int                               explicit_mcs)
 {
   // Future: add the harq related functions later
   //  ul_harq_proc*    h   = get_ul_harq(tti, cc_idx);
@@ -269,7 +269,7 @@ int sched_ue::generate_formatN0(sched_interface::ul_sched_data_t* data,
   srslte_nbiot_dci_ul_t* dci = &data->dci;
 
   // Set DCI position
-  data->needs_npdcch = needs_npdcch;
+  data->needs_npdcch = needs_pdcch;
 
   int mcs = (explicit_mcs >= 0) ? explicit_mcs : carriers[0].fixed_mcs_ul;
   int tbs = 0;
@@ -277,7 +277,7 @@ int sched_ue::generate_formatN0(sched_interface::ul_sched_data_t* data,
   // uint32_t nof_retx;
   uint32_t i_tbs  = 0;
   uint32_t nof_sc = 12; // Currently only support sc=12
-  uint32_t i_ru   = 3;  // Currently only support RU number=4 (MCS0)
+  uint32_t i_ru   = (alloc.len == 6) ? 5 : 3;  // Currently only support RU number=4 (MCS0)
 
   if (mcs >= 0) {
     if (nof_sc == 1) {

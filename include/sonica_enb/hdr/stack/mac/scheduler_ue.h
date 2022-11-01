@@ -169,7 +169,7 @@ public:
   int generate_formatN0(sched_interface::ul_sched_data_t* data,
 //                       uint32_t                          tti,
 //                       uint32_t                          cc_idx,
-//                       ul_harq_proc::ul_alloc_t          alloc,
+                       ul_harq_proc::ul_alloc_t          alloc,
                        bool                              needs_pdcch,
 //                       srslte_dci_location_t             cce_range,
                        int                               explicit_mcs = -1);
