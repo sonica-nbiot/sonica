@@ -21,6 +21,7 @@
 
 #include "srslte/common/common.h"
 #include "srslte/srslte.h"
+#include <array>
 #include <vector>
 
 #ifndef SRSLTE_SCHED_INTERFACE_NB_H

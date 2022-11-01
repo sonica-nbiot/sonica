@@ -28,6 +28,8 @@
 
 #include "srslte/common/common.h"
 
+#include <array>
+
 namespace srslte {
 
 typedef enum {
