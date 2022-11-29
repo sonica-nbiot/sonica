@@ -356,11 +356,13 @@ void srslte_nsss_generate(cf_t* signal, uint32_t cell_id)
 
     // iterate over all possible cyclic shifts
     for (int theta_f = 0; theta_f < SRSLTE_NSSS_NUM_SEQ; theta_f++) {
+      float theta_f_r = theta_f / 4.0;
+
       for (int n = 0; n < SRSLTE_NSSS_LEN; n++) {
         int n_prime = n % 131;
         int m       = n % 128;
 
-        float arg = (float)sign * 2.0 * M_PI * ((float)theta_f) * ((float)n);
+        float arg = (float)sign * 2.0 * M_PI * theta_f_r * ((float)n);
         float complex tmp1;
         __real__ tmp1 = cosf(arg);
         __imag__ tmp1 = sinf(arg);
@@ -385,15 +387,15 @@ void srslte_nsss_put_subframe(srslte_nsss_synch_t* q,
                               const uint32_t       nof_prb,
                               const uint32_t       nbiot_prb_offset)
 {
-  int theta_f = (int)floor(33 / 132.0 * (nf / 2.0)) % SRSLTE_NSSS_NUM_SEQ;
+  int theta_f_m4 = (nf / 2) % SRSLTE_NSSS_NUM_SEQ;
 
   // skip first 3 OFDM symbols over all PRBs completely
   int k = 3 * nof_prb * SRSLTE_NRE + nbiot_prb_offset * SRSLTE_NRE;
 
-  DEBUG("%d.9: Putting NSSS with theta_f=%d\n", nf, theta_f);
+  DEBUG("%d.9: Putting NSSS with theta_f=(33/132)*%d\n", nf, theta_f_m4);
   for (int l = 0; l < SRSLTE_CP_NORM_SF_NSYMB - 3; l++) {
     memcpy(&subframe[k + SRSLTE_NSSS_NSC * l],
-           &nsss[(theta_f * SRSLTE_NSSS_LEN) + (l * SRSLTE_NSSS_NSC)],
+           &nsss[(theta_f_m4 * SRSLTE_NSSS_LEN) + (l * SRSLTE_NSSS_NSC)],
            SRSLTE_NSSS_NSC * sizeof(cf_t));
     k += (nof_prb - 1) * SRSLTE_NRE;
   }
