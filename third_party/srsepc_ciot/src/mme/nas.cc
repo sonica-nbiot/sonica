@@ -662,6 +662,8 @@ bool nas::handle_guti_attach_request_known_ue(nas*                              
     emm_ctx->state = EMM_STATE_DEREGISTERED;
     // Save Attach type
     emm_ctx->attach_type = attach_req.eps_attach_type;
+    // Save PTI
+    emm_ctx->procedure_transaction_id = pdn_con_req.proc_transaction_id;
 
     // Set eNB information
     ecm_ctx->enb_ue_s1ap_id = enb_ue_s1ap_id;
