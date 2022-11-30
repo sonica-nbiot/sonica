@@ -896,9 +896,6 @@ bool nas::handle_nb_control_plane_service_request(uint32_t                m_tmsi
 
   uint64_t imsi = s1ap->find_imsi_from_m_tmsi(m_tmsi);
 
-  // TODO: tmp hack
-  imsi = 901700000040740;
-
   if (imsi == 0) {
     nas_log->console("NB-IoT: handle_nb_control_plane_service_request--------------------  Could not find IMSI from M-TMSI. M-TMSI 0x%x\n", m_tmsi);
     nas_log->error("NB-IoT: handle_nb_control_plane_service_request-------------------- Could not find IMSI from M-TMSI. M-TMSI 0x%x\n", m_tmsi);
