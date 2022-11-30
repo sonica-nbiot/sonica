@@ -7444,8 +7444,8 @@ LIBLTE_ERROR_ENUM liblte_mme_unpack_nb_esm_message_container_ie(uint8** ie_ptr, 
   *ie_ptr += 1;
 
   if ((*ie_ptr)[0] != LIBLTE_MME_USER_DATA_CONTAINER_IEI){
-    printf("LIBMME: liblte_mme_unpack_nb_esm_message_container_ie: Do not contain user data! Error!\n");
-    return err;
+    printf("LIBMME: liblte_mme_unpack_nb_esm_message_container_ie: Do not contain user data. Stop Parsing.\n");
+    return LIBLTE_SUCCESS;
   }else{
     *ie_ptr += 1;
   }
