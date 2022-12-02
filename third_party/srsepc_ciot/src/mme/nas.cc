@@ -951,13 +951,15 @@ bool nas::handle_nb_control_plane_service_request(uint32_t                m_tmsi
     printf("\nNB-IoT NAS: handle_nb_control_plane_service_request---------Plain User Data End\n");
   }
 
-  nas_log->debug("NB-IoT: handle_nb_control_plane_service_request-------------------- Send the user data through S11U\n");
-  nas_log->console("NB-IoT: handle_nb_control_plane_service_request-------------------- Send the user data through S11U\n");
-  srslte::byte_buffer_t* pdu = pool->allocate();
-  memcpy(pdu->msg, nb_esm_msg.user_data.msg, nb_esm_msg.user_data.N_bytes);
-  pdu->N_bytes = nb_esm_msg.user_data.N_bytes;
-  nas_ctx->pending_ul_pkt.push_back(pdu);
-  // TODO: the PDU will be deallocate in the mme_gtpc. Will this cause memory leakage?
+  if (nb_esm_msg.user_data.N_bytes > 0) {
+    nas_log->debug("NB-IoT: handle_nb_control_plane_service_request-------------------- Send the user data through S11U\n");
+    nas_log->console("NB-IoT: handle_nb_control_plane_service_request-------------------- Send the user data through S11U\n");
+    srslte::byte_buffer_t* pdu = pool->allocate();
+    memcpy(pdu->msg, nb_esm_msg.user_data.msg, nb_esm_msg.user_data.N_bytes);
+    pdu->N_bytes = nb_esm_msg.user_data.N_bytes;
+    nas_ctx->pending_ul_pkt.push_back(pdu);
+    // TODO: the PDU will be deallocate in the mme_gtpc. Will this cause memory leakage?
+  }
 
   mac_valid = nas_ctx->integrity_check(nas_rx);
 
