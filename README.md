@@ -2,6 +2,10 @@
 
 ## Introduction
 
+Notice: This is an archive repo that a basic feature set. To access the
+latest release with most recent update and full functionality,
+please visit [here](http://metro.cs.ucla.edu/codeshare.html).
+
 Sonica provides an open-source NB-IoT testbed that is able to communicate with commodity off-the-shelf (COTS) devices.
 It implements NB-IoT version of eNodeB and an EPC with Cellular
 Internet-of-Things (CIoT) extensions.
